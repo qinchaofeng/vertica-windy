@@ -184,3 +184,7 @@ select projection_schema||'.'||projection_name,
  from projection_storage where row_count!=0 group by 1 order by 2 desc limit 10;
 
 
+---catalog size
+SELECT pool_name, memory_size_kb, memory_size_actual_kb, memory_inuse_kb,
+   general_memory_borrowed_kb,running_query_count 
+   FROM V_MONITOR.RESOURCE_POOL_STATUS where pool_name='metadata';
